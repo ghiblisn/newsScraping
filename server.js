@@ -32,7 +32,9 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/newsScraping");
+// mongoose.connect("mongodb://localhost/newsScraping");
+mongoose.connect("mongodb://heroku_gz35lk6t:5ij5125senbidl0o5s7s72op3i@ds161483.mlab.com:61483/heroku_gz35lk6t");
+
 var db = mongoose.connection;
 
 // Show any mongoose errors

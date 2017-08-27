@@ -9,17 +9,6 @@ $.get("/scrape", function(data) {
     }
   });
 })
-// .done(function(data){
-//   $.getJSON("/articles", function(data) {
-//     // For each one
-//     for (var i = 0; i < data.length; i++) {
-//       // Display the apropos information on the page
-//       $("#articles").append("<p id ='articlesPost' data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "' data-title='" + data[i].title + "'data-link='" + data[i].link + "' id='saveArticles' style='position: relative;right: -20px;'>Save</button><br />" + data[i].link + "</p>");
-
-//     }
-//   });
-
-// });
 
 // $.getJSON("/articles", function(data) {
 //   // For each one
