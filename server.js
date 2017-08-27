@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://heroku_gz35lk6t:5ij5125senbidl0o5s7s72op3i@ds161483.mlab.com:61483/heroku_gz35lk6t");
+mongoose.connect("mongodb://localhost/newsScraping");
 var db = mongoose.connection;
 
 // Show any mongoose errors
@@ -84,17 +84,25 @@ app.get("/scrape", function(req, res) {
             }
             // Or log the doc
             else {
-              console.log(doc);
             }
           });
-
+        });
+        Article.find({}, function(error, doc) {
+          // Log any errors
+          if (error) {
+            console.log(error);
+          }
+          // Or send the doc to the browser as a json object
+          else {
+            res.json(doc);
+          }
         });
       });
     }
   });
   
   // Tell the browser that we finished scraping the text
-  res.send("Scrape Complete");
+  // res.send("Scrape Complete");
 });
 
 app.get("/remove", function(req,res){
@@ -254,7 +262,6 @@ app.post("/saveArticles/:id", function(req, res) {
     }
     // Or log the doc
     else {
-      console.log(doc);
       res.redirect("/");
     }
   });
