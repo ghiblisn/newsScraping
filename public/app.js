@@ -1,21 +1,26 @@
-// Grab the articles as a json
-$.getJSON("/articles", function(data) {
-  // For each one
-  for (var i = 0; i < data.length; i++) {
-    // Display the apropos information on the page
-    $("#articles").append("<p id ='articlesPost' data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "' data-title='" + data[i].title + "'data-link='" + data[i].link + "' id='saveArticles' style='position: relative;right: -20px;'>Save</button><br />" + data[i].link + "</p>");
 
-  }
+// Scraping
+$.getJSON("/scrape", function(data) {
+
+  // Grab the articles as a json
+  $.getJSON("/articles", function(data) {
+    // For each one
+    for (var i = 0; i < data.length; i++) {
+      // Display the apropos information on the page
+      $("#articles").append("<p id ='articlesPost' data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "' data-title='" + data[i].title + "'data-link='" + data[i].link + "' id='saveArticles' style='position: relative;right: -20px;'>Save</button><br />" + data[i].link + "</p>");
+
+    }
+  });
+
+  $.getJSON("/savedArticles", function(data) {
+    // For each one
+    for (var i = 0; i < data.length; i++) {
+      // Display the apropos information on the page
+      $("#savedArticles").append("<p id ='savedArticlesPost' data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "' data-title='" + data[i].title + "'data-link='" + data[i].link + "' id='removeArticles' style='position: relative;right: -20px;'>Remove</button><br />" + data[i].link + "</p>");
+    }
+  });
+
 });
-
-$.getJSON("/savedArticles", function(data) {
-  // For each one
-  for (var i = 0; i < data.length; i++) {
-    // Display the apropos information on the page
-    $("#savedArticles").append("<p id ='savedArticlesPost' data-id='" + data[i]._id + "'>" + data[i].title + "<button data-id='" + data[i]._id + "' data-title='" + data[i].title + "'data-link='" + data[i].link + "' id='removeArticles' style='position: relative;right: -20px;'>Remove</button><br />" + data[i].link + "</p>");
-  }
-});
-
 
 // Whenever someone clicks a p tag
 // $(document).on("click", "#articlesPost", function() {
